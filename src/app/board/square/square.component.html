@@ -1,0 +1,3 @@
+<mat-card [@slideInOut] (click)="changePlayer()" [ngClass]="{noClick: gameService.gameOver} " class="{{square.winner ? 'game-square winner-color' : 'game-square'}}">
+    <p>{{square.state}}</p>
+</mat-card>

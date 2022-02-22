@@ -1,0 +1,43 @@
+.game-square { 
+    height: 100%; 
+    line-height: 0.85;
+    cursor: pointer;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.winner-color {
+    background-color: rgb(188, 247, 247);
+}
+
+p { 
+    display: inline;
+    margin: 0px;
+    font-size: 3rem;
+    overflow: hidden;
+}
+
+.noClick {
+    pointer-events: none;
+}
+
+@media (max-width: 710px) {
+    p {
+        font-size: 2rem;
+    } 
+}
+
+@media (max-width: 576px) {
+    p {
+        font-size: 2rem;
+    } 
+
+    .game-square { 
+        height: 100%; 
+        text-align: center;
+        line-height: 0.85;
+        cursor: pointer;
+    }
+}

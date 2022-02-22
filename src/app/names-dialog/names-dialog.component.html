@@ -1,0 +1,47 @@
+<form [formGroup]="playersForm">
+    <div class="form-group">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>First player</mat-label>
+            <input data-testid="firstPlayer" matInput id="firstPlayer" placeholder="First player" name="firstPlayer" formControlName="firstPlayer" required />
+            <mat-error *ngIf="!playersForm.get('firstPlayer')?.valid && playersForm.get('firstPlayer')?.touched">
+            <span *ngIf="playersForm.get('firstPlayer')?.errors">This feild is required</span>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Second player</mat-label>
+        <input data-testid="secondPlayer" matInput id="secondPlayer" placeholder="Second Player" name="secondPlayer" formControlName="secondPlayer" required />
+        <mat-error *ngIf="!playersForm.get('secondPlayer')?.valid && playersForm.get('secondPlayer')?.touched">
+            <span *ngIf="playersForm.get('secondPlayer')?.errors">This feild is required</span>
+        </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Board Size</mat-label>
+            <mat-select data-testid="boardSize" (selectionChange)="boardSizeChange($event.value)" [(value)]="selectedBoardSize" formControlName="boardSize" #boardSize  id="boardSize"
+                name="boardSize">
+                <mat-option *ngFor="let item of borderSizes" [value]="item.value">{{item.text}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!playersForm.get('boardSize')?.valid && playersForm.get('boardSize')?.touched">
+                <span *ngIf="playersForm.get('boardSize')?.errors">This feild is required</span>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Cells To Win</mat-label>
+            <mat-select data-testid="examination" (selectionChange)="examinationChange($event.value)" [(value)]="selectedExamination" formControlName="examination" #examination  id="examination"
+                name="examination">
+                <mat-option *ngFor="let item of examinationList" [value]="item">{{item}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!playersForm.get('examination')?.valid && playersForm.get('examination')?.touched">
+                <span *ngIf="playersForm.get('examination')?.errors">This feild is required</span>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <button [disabled]="!playersForm.valid" class="w-100" mat-raised-button color="primary" data-testid="submitPlayers" (click)="onSubmit()">Submit</button>
+    </div>
+</form>

@@ -1,0 +1,39 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav>
+    <div fxLayout="column">
+      <a mat-button routerLink="/">Game</a>
+      <a mat-button routerLink="/instructions">Instructions</a>
+      <mat-slide-toggle
+        [checked]="isDarkMode"
+        (change)="switchMode($event)"
+        >Dark</mat-slide-toggle
+      >
+    </div>
+  </mat-sidenav>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.open()" fxHide="false" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img
+    class="mr-10"
+    width="40"
+    alt="Angular Logo"
+    src="../assets/xo-logo.png"
+  />
+    <span> Tic Tac Toe</span>
+    <span class="blank-grow"></span>
+    <div fxLayoutAlign="center center" fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <a mat-button routerLink="/">Game</a>
+      <a mat-button routerLink="/instructions">Instructions</a>
+      <mat-slide-toggle
+        [checked]="isDarkMode"
+        (change)="switchMode($event)"
+        >Dark</mat-slide-toggle
+      >
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+
+</mat-sidenav-container>
+
+

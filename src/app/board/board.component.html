@@ -1,0 +1,16 @@
+<div class="header">
+    <div class="mat-display-1 text-center"  
+      *ngIf="!gameService.gameOver"  
+    > 
+      {{ gameService.activePlayer === 'X' ? gameService.firstPlayer : gameService.secondPlayer }}'s turn  
+    </div>
+  </div>
+  <div class="text-center mat-display-1" *ngIf="gameService.winner">  {{gameService.activePlayer === 'X' ? gameService.firstPlayer : gameService.secondPlayer }} WON </div>
+  <div class="text-center mat-display-1" *ngIf="!gameService.winner && gameService.gameOver">No Winner!</div>
+  <button *ngIf="gameService.gameOver" class="reset-button-styling" mat-raised-button color="primary" (click)="resetGame()">Reset</button>
+  <button *ngIf="gameService.allowRollBack && !gameService.gameOver && gameService.turnCount !== 0" class="reset-button-styling" mat-raised-button color="accent" (click)="gameService.rollBack()">Roll Back </button>
+<div class="container">
+    <div [ngStyle]="{'width': 'calc(100%/' + gameService.boardSize + ' - 2px)', 'height': 'calc(100%/' + gameService.boardSize + ' - 2px)'}" *ngFor="let square of gameService.board">
+        <app-square [square]="square"></app-square>
+    </div>
+</div>
